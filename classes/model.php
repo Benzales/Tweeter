@@ -60,8 +60,8 @@ class Model  {
             else{
                 $_SESSION['username'] = $username;
                 $_SESSION['password'] = $password;
-                ob_end_clean();
-                header("index.php");
+                header("Location: http://tweeterclone.xyz/index.php");
+                exit();
             }
         }
     }

@@ -5,27 +5,29 @@ include_once 'header.php';
 class View {
     public function displayLogin(){
         print <<<EOF
+        <div>    
             <form>
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="login"><br>
-                <label for="pwd">Password:</label>
-                <input type="password" id="pwd" name="password">
+                <input placeholder="Username" type="text" id="username" name="login"><br>
+                <input placeholder="Password" type="password" id="pwd" name="password">
+                <div></div>
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
+        </div>
+        <div>
             <form>
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="register"><br>
-                <label for="pwd">Password:</label>
-                <input type="password" id="pwd" name="pwd">
-                <button type="submit" class=btn btn-primary">Register</button>
+                <input placeholder="New Username" type="text" id="username" name="register"><br>
+                <input placeholder="New password" type="password" id="pwd" name="pwd">
+                <div></div>
+                <button type="submit" class="btn btn-primary">Register</button>
             </form>
+        </div>
 EOF;
     }
 
     public function tweetSpace() {
 print <<<EOF
             <form>
-                <textarea placeholder="Enter your text here..."     style="background-color:#D3D3D3" name=tweet class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                <textarea placeholder="Enter your text here..." style="background-color:#D3D3D3" name=tweet class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
                 <button type="submit" class="btn btn-primary">Post</button>
             </form>
 EOF;

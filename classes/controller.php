@@ -17,7 +17,7 @@ class Controller {
     }
 
     public function login(){
-        if(!$_SESSION['username']){
+        if(!isset($_SESSION['username'])){
             $this -> view -> displayLogin();
         }
     }
@@ -27,7 +27,7 @@ class Controller {
     }
 
     public function renderTweets(){
-        if($_SESSION['username']){
+        if(isset($_SESSION['username'])){
             $this -> view -> tweetSpace();
             $this -> model -> accessTweets();
         }
