@@ -33,16 +33,23 @@ class Model  {
         if($_REQUEST['follow']){
             $follow = mysql_real_escape_string($_REQUEST['follow']);
             $this -> query("INSERT IGNORE INTO follows(following, follower) VALUES('$follow', '$username')");
+            $this -> query("update users set fcount = fcount + 1 where username = '$follow'");
+            header("Location: http://tweeterclone.xyz/index.php");
+            exit();
         }
         if($_REQUEST['unfollow']){
             $unfollow = mysql_real_escape_string($_REQUEST['unfollow']);
             $this -> query("DELETE FROM follows WHERE following = '$unfollow' AND follower = '$username'");
+            $this -> query("update users set fcount = fcount - 1 where username = '$unfollow'");
+            header("Location: http://tweeterclone.xyz/index.php");
+            exit();
         }
         if($_REQUEST['tweet']){
             $tweet = mysql_real_escape_string($_REQUEST['tweet']);  
             $date = Date("Y-m-d h:i:s");
-            print $username;
             $this -> query("insert into tweets (username, tweet, date) values('$username', '".$tweet."', '".$date."')");
+            header("Location: http://tweeterclone.xyz/index.php");
+            exit();
         }
         if($_REQUEST['register']){
             $new_user = mysql_real_escape_string($_REQUEST['register']);
@@ -80,9 +87,10 @@ class Model  {
         while($row = mysql_fetch_assoc($result)) {
             $user = $row['username'];
             $post = htmlspecialchars($row['tweet']);
+            $fcount = $this -> getSingle("select fcount from users where username = '$user'");
             $date = $row['date'];
             $follow = $this -> loadFollow($user);
-            $this -> view -> showTweets($user, $post, $date, $follow);
+            $this -> view -> showTweets($user, $post, $date, $follow, $fcount);
         }
         $this -> view -> tableBorder();
     }

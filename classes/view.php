@@ -27,21 +27,21 @@ EOF;
     public function tweetSpace() {
 print <<<EOF
             <form>
-                <textarea placeholder="Enter your text here..." style="background-color:#D3D3D3" name=tweet class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                <textarea placeholder="Twit here..." style="background-color:#D3D3D3" name=tweet class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
                 <button type="submit" class="btn btn-primary">Post</button>
             </form>
 EOF;
     }
 
-    public function showTweets($user, $post, $date, $follow){
+    public function showTweets($user, $post, $date, $follow, $fcount){
 print <<<EOF
         <table border=1>
             <thead>
                 <th style="color:#1DA1F2"> @<b>$user</b> </th>
+                <th>$fcount</th>
                 <th>$date</th>
                 <th>$follow</th>
             </thead>
-            
             <tbody>
                 <caption>$post</caption>
             </tbody>
