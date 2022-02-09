@@ -5,20 +5,20 @@ include_once 'header.php';
 class View {
     public function displayLogin(){
         print <<<EOF
-        <div>    
+        <div id="loginpage">    
             <form>
-                <input placeholder="Username" type="text" id="username" name="login"><br>
+                <input placeholder="Username" type="text" id="username" name="login">
+                <br>
                 <input placeholder="Password" type="password" id="pwd" name="password">
-                <div></div>
-                <button type="submit" class="btn btn-primary">Login</button>
+                <br>
+                <button type="submit" id="loginbutton">Login</button>
             </form>
-        </div>
-        <div>
             <form>
-                <input placeholder="New Username" type="text" id="username" name="register"><br>
+                <input placeholder="New Username" type="text" id="username" name="register">
+                <br>
                 <input placeholder="New password" type="password" id="pwd" name="pwd">
-                <div></div>
-                <button type="submit" class="btn btn-primary">Register</button>
+                <br>
+                <button type="submit" id="loginbutton">Register</button>
             </form>
         </div>
 EOF;
@@ -27,34 +27,31 @@ EOF;
     public function tweetSpace() {
 print <<<EOF
             <form>
-                <textarea placeholder="Twit here..." style="background-color:#D3D3D3" name=tweet class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-                <button type="submit" class="btn btn-primary">Post</button>
+                <textarea placeholder="Twit here..." name=tweet id="rcorners" rows="4"></textarea>
+                <br>
+                <button id="rcorners" type="submit" class="btn btn-primary">Post</button>
             </form>
 EOF;
     }
 
     public function showTweets($user, $post, $date, $follow, $fcount){
 print <<<EOF
-        <table border=1>
+        <table>
             <thead>
-                <th style="color:#1DA1F2"> @<b>$user</b> </th>
-                <th>$fcount</th>
+                <th>@<b>$user</b> </th>
                 <th>$date</th>
                 <th>$follow</th>
+                <th>$fcount</th>
             </thead>
             <tbody>
-                <caption>$post</caption>
+                <caption id="rcorners">$post</caption>
             </tbody>
         </table>
+        <br>
 EOF;
     }
 
     public function showCategory($category) {
         print "<h2>$category</h2>";
-        print "<table border=1>";
-    }
-
-    public function tableBorder(){
-        print "</table>";
     }
 }

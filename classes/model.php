@@ -92,7 +92,6 @@ class Model  {
             $follow = $this -> loadFollow($user);
             $this -> view -> showTweets($user, $post, $date, $follow, $fcount);
         }
-        $this -> view -> tableBorder();
     }
 
     public function loadFollow($user){
