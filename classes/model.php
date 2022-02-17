@@ -75,10 +75,8 @@ class Model  {
 
     public function accessTweets(){
         $username = $_SESSION['username'];
-        $following = "SELECT * FROM tweets WHERE username IN (SELECT following FROM follows WHERE follower = '".$username."') ORDER BY DATE DESC";
-        $notFollowing = "SELECT * FROM tweets ORDER BY DATE DESC";
-        $this -> accessData($following, "My Feed");
-        $this -> accessData($notFollowing, "Explore");
+        $alltweets = "SELECT * FROM tweets ORDER BY DATE DESC";
+        $this -> accessData($alltweets, "Community.");
     }
 
     public function accessData($query, $category){
